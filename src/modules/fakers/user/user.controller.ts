@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { UserDTO } from '../../dto/faker.dto';
 import { CustomValidationPipe } from '../../../common/pipes/custom-validation.pipes';
 
-@Controller('mock-user')
+@Controller('mock-users')
 export class UserController {
     constructor(private readonly userService: UserService) { }
 

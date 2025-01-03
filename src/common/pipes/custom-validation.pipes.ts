@@ -16,7 +16,7 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('quantity' in value) {
-            if (value.quantity === null || value.quantity === undefined) {
+            if (value.quantity == null) {
                 errors.push('Quantity must not be null or empty');
             } else if (typeof value.quantity !== 'number') {
                 errors.push('Quantity must be a number');
@@ -25,6 +25,7 @@ export class CustomValidationPipe implements PipeTransform {
             } else if (value.quantity > 100) {
                 errors.push('Quantity must not be greater than 100');
             }
+
         }
 
         if ('badge' in value) {
@@ -34,6 +35,27 @@ export class CustomValidationPipe implements PipeTransform {
                 errors.push('Badge must be a number');
             } else if (value.badge > 3) {
                 errors.push('Badge must not be greater than 3');
+            }
+        }
+
+        if ('typeChannel' in value) {
+            if (!value.typeChannel) {
+                errors.push('TypeChannel must not be null or empty');
+            } else if (typeof value.typeChannel !== 'number') {
+                errors.push('TypeChannel must be a number');
+            } else if (value.typeChannel > 3) {
+                errors.push('TypeChannel must not be greater than 3');
+            }
+
+        }
+
+        if ('totalMessages' in value) {
+            if (value.totalMessages == null) {
+                errors.push('TotalMessages must not be null or empty');
+            } else if (typeof value.totalMessages !== 'number') {
+                errors.push('TotalMessages must be a number');
+            } else if (value.totalMessages > 100) {
+                errors.push('TotalMessages must not be greater than 100');
             }
         }
 
@@ -48,7 +70,6 @@ export class CustomValidationPipe implements PipeTransform {
                 },
             });
         }
-
         return value;
     }
 }

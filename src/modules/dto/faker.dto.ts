@@ -7,13 +7,13 @@ export class UserDTO {
     badge: number;
 }
 
-// export class ChannelDTO {
+export class ChannelDTO {
 
-//     prefix: string
-//     quantity: number
-//     typeChannel: number
-//     totalMessages: number
-// }
+    prefix: string
+    quantity: number
+    typeChannel: number
+    totalMessages: number
+}
 
 // export class FriendDTO {
 //     @IsString()

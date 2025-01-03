@@ -15,7 +15,8 @@ export class UserService {
 
     async createMockUser(data: UserDTO) {
 
-        const { baseUrl, mockUsersEndpoint } = getApiConfig(this.configService);
+        const { baseUrl, mockEndpoints } = getApiConfig(this.configService);
+        const mockUsersEndpoint = mockEndpoints['users'];
         const url = `${baseUrl}${mockUsersEndpoint}`;
 
         try {
