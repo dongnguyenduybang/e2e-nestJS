@@ -4,6 +4,7 @@ export class UserDTO {
 
     prefix: string;
     quantity: number;
+    badge: number;
 }
 
 // export class ChannelDTO {
