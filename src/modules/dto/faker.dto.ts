@@ -15,25 +15,15 @@ export class ChannelDTO {
     totalMessages: number
 }
 
-// export class FriendDTO {
-//     @IsString()
-//     @IsNotEmpty()
-//     preix: string
+export class FriendDTO {
 
-//     @IsNumber()
-//     @IsPositive()
-//     @IsNotEmpty()
-//     type: number
-// }
+    preix: string
+    type: number
+}
 
-// export class MessageDTO {
-//     @IsString()
-//     @IsNotEmpty()
-//     workspaceId: string
-//     channelId: string
+export class MessageDTO {
 
-//     @IsNumber()
-//     @IsPositive()
-//     @IsNotEmpty()
-//     quantity: number
-// }
+    workspaceId: string
+    channelId: string
+    quantity: number
+}

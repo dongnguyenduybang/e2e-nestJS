@@ -59,6 +59,36 @@ export class CustomValidationPipe implements PipeTransform {
             }
         }
 
+        if ('workspaceId' in value) {
+            if (value.workspaceId == null) {
+                errors.push('WorkspaceId must not be null or empty')
+            } else if (typeof value.workspaceId !== 'string') {
+                errors.push('WorkspaceId must be a string')
+            }
+        }
+
+        if ('channelId' in value) {
+            if (value.channelId == null) {
+                errors.push('ChannelId must not be null or empty')
+            } else if (typeof value.channelId !== 'string') {
+                errors.push('ChannelId must be a string')
+            } else if (value.type < 0) {
+                errors.push('Type must be ')
+            }
+        }
+
+        if ('type' in value) {
+            if (value.type == null) {
+                errors.push('Type must not be null or empty')
+            } else if (typeof value.type !== 'number') {
+                errors.push('Type must be a number')
+            } else if (value.type < 0) {
+                errors.push('Type must not be less than 0')
+            } else if (value.type > 2) {
+                errors.push('Type must not be geater than 2')
+            }
+        }
+
         if (errors.length > 0) {
             throw new BadRequestException({
                 ok: false,
