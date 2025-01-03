@@ -5,6 +5,7 @@ import { CustomValidationPipe } from '../../../common/pipes/custom-validation.pi
 
 @Controller('mock-messages')
 export class MessageController {
+
     constructor(private readonly messageService: MessageService) { }
 
     @Post()
