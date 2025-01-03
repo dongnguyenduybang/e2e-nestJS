@@ -14,5 +14,7 @@ export class FriendController {
     async createMockFriend(@Body() data: FriendDTO, @Headers() headers: any) {
 
         return this.friendService.createMockFriend(data, headers);
+
+
     }
 }

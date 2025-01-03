@@ -4,8 +4,10 @@ import { FriendController } from './friend.controller';
 import { FriendService } from './friend.service';
 
 @Module({
+
     imports: [HttpModule],
     controllers: [FriendController],
     providers: [FriendService],
+
 })
 export class FriendModule { }

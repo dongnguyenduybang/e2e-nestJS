@@ -8,6 +8,7 @@ import { FriendDTO } from '@modules/dto';
 @Injectable()
 
 export class FriendService {
+
     constructor(
         private readonly configService: ConfigService,
         private readonly httpService: HttpService,
@@ -27,9 +28,11 @@ export class FriendService {
         };
 
         try {
+
             const response = await firstValueFrom(this.httpService.post(url, data, { headers }));
 
             return response.data
+
         } catch (error) {
 
             console.error('Error:', error.message, error.response?.data);
