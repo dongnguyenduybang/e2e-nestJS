@@ -4,6 +4,7 @@ import * as request from 'supertest';
 import { AppModule } from '../../src/app.module';
 
 describe('E2E MockFriend', () => {
+
     let app: INestApplication;
 
     beforeAll(async () => {
@@ -119,5 +120,6 @@ describe('E2E MockFriend', () => {
         expect(response.body.data[0]).toBeDefined();
         expect(response.body.error).toBeUndefined();
     });
+
 
 });
