@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './modules/fakers/user/user.module';
+import { ChannelModule } from './modules/fakers/channel/channel.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -8,7 +9,9 @@ import { ConfigModule } from '@nestjs/config';
             isGlobal: true,
             envFilePath: '.env',
         }),
-        UserModule
+        UserModule,
+        ChannelModule
+
     ],
 })
 export class AppModule { }
