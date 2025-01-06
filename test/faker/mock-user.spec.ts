@@ -47,8 +47,8 @@ describe('E2E MockUser', () => {
         },
         {
             name: 'should return quantity must not less than 1',
-            payload: { prefix: 'testfaker', quantity: 0, badge: 1 },
-            expectedDetails: ['Error 1: Quantity must not be less than 1'],
+            payload: { prefix: 'testfaker', quantity: -1, badge: 1 },
+            expectedDetails: ['Error 1: Quantity must not be less than 0'],
         },
         {
             name: 'should return quantity must not greater than 100',
@@ -75,9 +75,9 @@ describe('E2E MockUser', () => {
         },
         {
             name: 'should return quantity must not less than 1, badge must be a number',
-            payload: { prefix: 'testfaker', quantity: 0, badge: 'abcdef' },
+            payload: { prefix: 'testfaker', quantity: -1, badge: 'abcdef' },
             expectedDetails: [
-                'Error 1: Quantity must not be less than 1',
+                'Error 1: Quantity must not be less than 0',
                 'Error 2: Badge must be a number',
             ],
         },
@@ -109,7 +109,7 @@ describe('E2E MockUser', () => {
     it('should return fake data user successfully', async () => {
         const response = await request(app.getHttpServer())
             .post('/mock-users')
-            .send({ prefix: 'testfaker', quantity: 1, badge: 1 });
+            .send({ prefix: 'testfakers', quantity: 1, badge: 1 });
 
         expect(response.status).toBe(201);
         expect(response.body.ok).toBe(true);

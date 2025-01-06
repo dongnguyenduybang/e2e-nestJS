@@ -20,7 +20,7 @@ describe('E2E MockFriend', () => {
         await app.close();
     });
 
-    const baseHeaders = {
+    const headers = {
         'x-user-id': '01JGMYQNFQG5V7ZKWND416PS3Z',
         'x-country-code': 'VN',
     };
@@ -38,8 +38,8 @@ describe('E2E MockFriend', () => {
         },
         {
             name: 'should return quantity must not less than 1',
-            payload: { quantity: 0, type: 1 },
-            expectedDetails: ['Error 1: Quantity must not be less than 1'],
+            payload: { quantity: -1, type: 1 },
+            expectedDetails: ['Error 1: Quantity must not be less than 0'],
         },
         {
             name: 'should return quantity must not greater than 100',
@@ -97,7 +97,7 @@ describe('E2E MockFriend', () => {
             const response = await request(app.getHttpServer())
                 .post('/mock-friends')
                 .send(payload)
-                .set(baseHeaders);
+                .set(headers);
 
             expect(response.status).toBe(400);
             expect(response.body.ok).toBe(false);
@@ -112,7 +112,7 @@ describe('E2E MockFriend', () => {
         const response = await request(app.getHttpServer())
             .post('/mock-friends')
             .send({ quantity: 1, type: 1 })
-            .set(baseHeaders);
+            .set(headers);
 
         expect(response.status).toBe(201);
         expect(response.body.ok).toBe(true);

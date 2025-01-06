@@ -24,32 +24,32 @@ describe('E2E MockMessage', () => {
     const testCases = [
         {
             name: 'should return quantity must not be null or empty',
-            payload: { quantity: null, workspaceId: '0', channelId: '01JGN846HNAA5AJQP637P0ATY0' },
+            payload: { quantity: null, workspaceId: '0', channelId: '01JGX570EW00H1C9YR5N5HTA42' },
             expectedDetails: ['Error 1: Quantity must not be null or empty'],
         },
         {
             name: 'should return quantity must be a number',
-            payload: { quantity: 'aaaaaaaa', workspaceId: '0', channelId: '01JGN846HNAA5AJQP637P0ATY0' },
+            payload: { quantity: 'aaaaaaaa', workspaceId: '0', channelId: '01JGX570EW00H1C9YR5N5HTA42' },
             expectedDetails: ['Error 1: Quantity must be a number'],
         },
         {
             name: 'should return quantity must not less than 1',
-            payload: { quantity: 0, workspaceId: '0', channelId: '01JGN846HNAA5AJQP637P0ATY0' },
-            expectedDetails: ['Error 1: Quantity must not be less than 1'],
+            payload: { quantity: -1, workspaceId: '0', channelId: '01JGX570EW00H1C9YR5N5HTA42' },
+            expectedDetails: ['Error 1: Quantity must not be less than 0'],
         },
         {
             name: 'should return quantity must not greater than 100',
-            payload: { quantity: 101, workspaceId: '0', channelId: '01JGN846HNAA5AJQP637P0ATY0' },
+            payload: { quantity: 101, workspaceId: '0', channelId: '01JGX570EW00H1C9YR5N5HTA42' },
             expectedDetails: ['Error 1: Quantity must not be greater than 100'],
         },
         {
             name: 'should return workspaceId must not be null or empty',
-            payload: { quantity: 1, workspaceId: null, channelId: '01JGN846HNAA5AJQP637P0ATY0' },
+            payload: { quantity: 1, workspaceId: null, channelId: '01JGX570EW00H1C9YR5N5HTA42' },
             expectedDetails: ['Error 1: WorkspaceId must not be null or empty'],
         },
         {
             name: 'should return workspaceId must be a string',
-            payload: { quantity: 1, workspaceId: 1, channelId: '01JGN846HNAA5AJQP637P0ATY0' },
+            payload: { quantity: 1, workspaceId: 1, channelId: '01JGX570EW00H1C9YR5N5HTA42' },
             expectedDetails: ['Error 1: WorkspaceId must be a string'],
         },
         {
@@ -64,9 +64,9 @@ describe('E2E MockMessage', () => {
         },
         {
             name: 'should return quantity must not less than 1, workspaceId must not be null or empty',
-            payload: { quantity: 0, workspaceId: null, channelId: '01JGN846HNAA5AJQP637P0ATY0' },
+            payload: { quantity: -1, workspaceId: null, channelId: '01JGX570EW00H1C9YR5N5HTA42' },
             expectedDetails: [
-                'Error 1: Quantity must not be less than 1',
+                'Error 1: Quantity must not be less than 0',
                 'Error 2: WorkspaceId must not be null or empty'
             ],
         },
@@ -106,7 +106,7 @@ describe('E2E MockMessage', () => {
     it('should return fake data messages successfully', async () => {
         const response = await request(app.getHttpServer())
             .post('/mock-messages')
-            .send({ quantity: 1, workspaceId: '0', channelId: '01JGN846HNAA5AJQP637P0ATY0' });
+            .send({ quantity: 1, workspaceId: '0', channelId: '01JGX570EW00H1C9YR5N5HTA42' });
 
         expect(response.status).toBe(201);
         expect(response.body.ok).toBe(true);

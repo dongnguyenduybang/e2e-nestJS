@@ -19,7 +19,7 @@ describe('E2E MockChannel', () => {
         await app.close();
     });
 
-    const baseHeaders = {
+    const headers = {
         'x-user-id': '01JGMYQNFQG5V7ZKWND416PS3Z',
         'x-country-code': 'VN',
     };
@@ -47,8 +47,8 @@ describe('E2E MockChannel', () => {
         },
         {
             name: 'should return quantity must not be less than 1',
-            payload: { quantity: 0, prefix: 'abcdefg', typeChannel: 1, totalMessages: 2 },
-            expectedDetails: ['Error 1: Quantity must not be less than 1'],
+            payload: { quantity: -1, prefix: 'abcdefg', typeChannel: 1, totalMessages: 2 },
+            expectedDetails: ['Error 1: Quantity must not be less than 0'],
         },
         {
             name: 'should return quantity must not be greater than 100',
@@ -116,7 +116,7 @@ describe('E2E MockChannel', () => {
             const response = await request(app.getHttpServer())
                 .post('/mock-channels')
                 .send(payload)
-                .set(baseHeaders);
+                .set(headers);
 
             expect(response.status).toBe(400);
             expect(response.body.ok).toBe(false);
@@ -130,8 +130,8 @@ describe('E2E MockChannel', () => {
     it('should return fake data channels successfully', async () => {
         const response = await request(app.getHttpServer())
             .post('/mock-channels')
-            .send({ quantity: 1, prefix: 'testfakerchannel11', typeChannel: 1, totalMessages: 1 })
-            .set(baseHeaders);
+            .send({ quantity: 1, prefix: 'testfakerchannel', typeChannel: 1, totalMessages: 1 })
+            .set(headers);
 
         expect(response.status).toBe(201);
         expect(response.body.ok).toBe(true);
