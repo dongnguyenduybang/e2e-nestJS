@@ -6,7 +6,7 @@ export class CustomValidationPipe implements PipeTransform {
         const errors: string[] = [];
 
         if ('prefix' in value) {
-            if (!value.prefix) {
+            if (!value.prefix || value.prefix == null) {
                 errors.push('Prefix must not be null or empty');
             } else if (typeof value.prefix !== 'string') {
                 errors.push('Prefix must be a string');
@@ -16,12 +16,12 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('quantity' in value) {
-            if (value.quantity == null) {
+            if (value.quantity == '' || value.quantity == null) {
                 errors.push('Quantity must not be null or empty');
             } else if (typeof value.quantity !== 'number') {
                 errors.push('Quantity must be a number');
-            } else if (value.quantity < 1) {
-                errors.push('Quantity must not be less than 1');
+            } else if (value.quantity < 0) {
+                errors.push('Quantity must not be less than 0');
             } else if (value.quantity > 100) {
                 errors.push('Quantity must not be greater than 100');
             }
@@ -29,7 +29,7 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('badge' in value) {
-            if (value.badge == null) {
+            if (!value.badge || value.badge == null) {
                 errors.push('Badge must not be null');
             } else if (typeof value.badge !== 'number') {
                 errors.push('Badge must be a number');
@@ -39,7 +39,7 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('typeChannel' in value) {
-            if (!value.typeChannel) {
+            if (!value.typeChannel || value.typeChannel == null) {
                 errors.push('TypeChannel must not be null or empty');
             } else if (typeof value.typeChannel !== 'number') {
                 errors.push('TypeChannel must be a number');
@@ -50,7 +50,7 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('totalMessages' in value) {
-            if (value.totalMessages == null) {
+            if (!value.totalMessages || value.totalMessages == null) {
                 errors.push('TotalMessages must not be null or empty');
             } else if (typeof value.totalMessages !== 'number') {
                 errors.push('TotalMessages must be a number');
@@ -60,7 +60,7 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('workspaceId' in value) {
-            if (value.workspaceId == null) {
+            if (!value.workspaceId || value.workspaceId == null) {
                 errors.push('WorkspaceId must not be null or empty')
             } else if (typeof value.workspaceId !== 'string') {
                 errors.push('WorkspaceId must be a string')
@@ -68,17 +68,17 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         if ('channelId' in value) {
-            if (value.channelId == null) {
+            if (!value.channelId || value.channelId == null) {
                 errors.push('ChannelId must not be null or empty')
             } else if (typeof value.channelId !== 'string') {
                 errors.push('ChannelId must be a string')
             } else if (value.type < 0) {
-                errors.push('Type must be ')
+                errors.push('Type must not be less than 0')
             }
         }
 
         if ('type' in value) {
-            if (value.type == null) {
+            if (!value.type || value.type == null) {
                 errors.push('Type must not be null or empty')
             } else if (typeof value.type !== 'number') {
                 errors.push('Type must be a number')
