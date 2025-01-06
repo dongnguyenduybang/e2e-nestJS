@@ -1,13 +1,12 @@
-import { IsNotEmpty, IsNumber, IsPositive, IsString, Max, Min } from "class-validator";
 
-export class UserDTO {
+export interface UserDTO {
 
     prefix: string;
     quantity: number;
     badge: number;
 }
 
-export class ChannelDTO {
+export interface ChannelDTO {
 
     prefix: string
     quantity: number
@@ -15,13 +14,13 @@ export class ChannelDTO {
     totalMessages: number
 }
 
-export class FriendDTO {
+export interface FriendDTO {
 
     preix: string
     type: number
 }
 
-export class MessageDTO {
+export interface MessageDTO {
 
     workspaceId: string
     channelId: string
