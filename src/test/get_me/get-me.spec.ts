@@ -82,10 +82,10 @@ describe('GetMe Tests', () => {
                 'Test Case': result.name,
                 'Status': result.status,
                 'Expected Errors': Array.isArray(result.expectedDetails)
-                    ? result.expectedDetails.join(', ').substring(0, 100) + (result.expectedDetails.join(', ').length > 100 ? '...' : '')
+                    ? result.expectedDetails.join(', ').substring(0, 100) + (result.expectedDetails.join(', ').length > 70 ? '...' : '')
                     : '',
                 'Actual Errors': Array.isArray(result.actualDetails)
-                    ? result.actualDetails.join(', ').substring(0, 100) + (result.actualDetails.join(', ').length > 100 ? '...' : '')
+                    ? result.actualDetails.join(', ').substring(0, 100) + (result.actualDetails.join(', ').length > 70 ? '...' : '')
                     : ''
             }))
         );
