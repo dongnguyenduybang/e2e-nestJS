@@ -17,10 +17,10 @@ export const getMockUser = async (): Promise<{ userId: string, token: string }> 
         }
     } catch (error) {
 
-        console.error("Error in getMockUserId:", error);
+        console.error("Error in getMockUser:", error);
 
 
-        throw new Error("Failed to get mock user ID");
+        throw new Error("Failed to get getMockUser");
     }
 };
 
@@ -46,7 +46,7 @@ export const getMockChannelId = async (): Promise<string> => {
         }
     } catch (error) {
 
-        console.error("Error in getMockUserId:", error);
+        console.error("Error in getMockChannelId:", error);
 
         throw new Error("Failed to get mock user ID");
     }
