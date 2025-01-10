@@ -3,8 +3,6 @@ import { testCases } from './validate-friend-input';
 import { validateLogicData } from './validate-friend-logic';
 import { getMockUser } from '../share-data';
 
-
-
 describe('MockFriend Tests', () => {
 
     let baseUrl, headers, baseCountryCode;

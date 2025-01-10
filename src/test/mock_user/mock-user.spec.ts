@@ -3,8 +3,6 @@ import { testCases } from './validate-user-input';
 import { validateLogicData } from './validate-user-logic';
 import { validateResponseData } from './validate-user-response';
 
-
-
 describe('MockUser Tests', () => {
     let totalTestCases = 0;
     let passedTestCases = 0;

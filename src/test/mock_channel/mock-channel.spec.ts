@@ -1,11 +1,7 @@
 import axios from 'axios';
-
 import { testCases } from './validate-channel-input';
-
 import { validateLogicData } from './validate-channel-logic'
 import { getMockUser } from '../share-data'
-
-
 
 const results = [];
 describe('MockChannel Tests', () => {
