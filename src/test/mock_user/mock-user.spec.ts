@@ -42,6 +42,8 @@ describe('MockUser Tests', () => {
                             });
                         } else {
                             failedTestCases++;
+                            console.log('Test Logic: MockUser')
+                            console.table(isValid.error.details);
                             results.push({
                                 name: testCase.name,
                                 status: 'FAIL',
@@ -51,8 +53,8 @@ describe('MockUser Tests', () => {
                         }
 
                         const isValidResponse = await validateResponseData(isValid.data);
-                        if (isValidResponse.ok) {
-                            console.log(' Check successful! Data is valid.');
+                        if (isValidResponse.ok == true) {
+                            console.log('Test Response: Check successful! Data is valid.');
                             console.log('\n=== Mock Channel Data ===');
                             console.table([
                                 {

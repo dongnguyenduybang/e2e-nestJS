@@ -50,8 +50,11 @@ describe('MockChannel Tests', () => {
                                 expectedDetails,
                                 actualDetails: [isValid.message]
                             });
+
                         } else {
                             failedTestCases++;
+                            console.log('Test Logic: MockChannel')
+                            console.table(isValid.error.details);
                             results.push({
                                 name: testCase.name,
                                 status: 'FAIL',

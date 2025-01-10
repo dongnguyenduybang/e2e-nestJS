@@ -29,6 +29,7 @@ describe('GetMe Tests', () => {
 
                         const isValid = validateLogicData(response.data);
 
+
                         if (isValid.ok === true) {
                             passedTestCases++;
                             results.push({
@@ -39,6 +40,8 @@ describe('GetMe Tests', () => {
                             });
                         } else {
                             failedTestCases++;
+                            console.log('Test Logic: GetMe')
+                            console.table(isValid.error.details);
                             results.push({
                                 name: testCase.name,
                                 status: 'FAIL',

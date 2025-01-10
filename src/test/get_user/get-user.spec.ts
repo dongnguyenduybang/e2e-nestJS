@@ -35,7 +35,7 @@ describe('GetUser Tests', () => {
                         const response = await axios.get(`${baseUrl}?userId=${userId}`, { headers });
 
                         const isValid = await validateLogicData(response.data);
-                        console.table(isValid.error.details);
+
 
                         if (isValid.ok === true) {
                             passedTestCases++;
@@ -47,6 +47,8 @@ describe('GetUser Tests', () => {
                             });
                         } else {
                             failedTestCases++;
+                            console.log('Test Logic: GetUser')
+                            console.table(isValid.error.details);
                             results.push({
                                 name: testCase.name,
                                 status: 'FAIL',

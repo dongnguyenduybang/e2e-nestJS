@@ -40,6 +40,8 @@ describe('MockUser Tests', () => {
                             });
                         } else {
                             failedTestCases++;
+                            console.log('Test Logic: MockMessage')
+                            console.table(isValid.error.details);
                             results.push({
                                 name: testCase.name,
                                 status: 'FAIL',
