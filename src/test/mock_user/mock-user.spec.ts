@@ -28,10 +28,8 @@ describe('MockUser Tests', () => {
 
                     try {
 
-                        // Gửi request và lấy response
                         const response = await axios.post(baseUrl, payload);
 
-                        // Kiểm tra logic response
                         const isValid = await validateLogicData(response.data);
 
                         if (isValid.ok === true) {
@@ -53,6 +51,30 @@ describe('MockUser Tests', () => {
                         }
 
                         const isValidResponse = await validateResponseData(isValid.data);
+                        if (isValidResponse.ok) {
+                            console.log(' Check successful! Data is valid.');
+                            console.log('\n=== Mock Channel Data ===');
+                            console.table([
+                                {
+                                    channelId: isValidResponse.data.mockChannelData.channelId,
+                                    name: isValidResponse.data.mockChannelData.name,
+                                    ownerId: isValidResponse.data.mockChannelData.ownerId,
+                                },
+                            ]);
+                            console.log('\n=== Token Data ===');
+                            console.table([
+                                {
+                                    userId: isValidResponse.data.tokenData.userId,
+                                    username: isValidResponse.data.tokenData.username,
+                                    createTime: isValidResponse.data.tokenData.createTime,
+                                    updateTime: isValidResponse.data.tokenData.updateTime,
+                                    displayName: isValidResponse.data.tokenData.profile.displayName,
+
+                                },
+                            ]);
+                        } else {
+                            console.log(' Check failed! Response is not valid.');
+                        }
 
                     } catch (error: any) {
                         const actualErrors = error.response?.data?.error?.details || [];
