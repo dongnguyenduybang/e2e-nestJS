@@ -31,16 +31,19 @@ export class ProfileDTO {
 export class SecurityDTO {
     @Expose()
     @ValidateNested()
+    @Type(() => Object)
     recoveryCode: { enable: boolean };
 
     @Expose()
     @ValidateNested()
+    @Type(() => Object)
     smartOTP: { enable: boolean };
 }
 
 export class PrivacyDTO {
     @Expose()
     @ValidateNested()
+    @Type(() => Object)
     mediaPermission: { value: number };
 }
 

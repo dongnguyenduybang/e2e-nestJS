@@ -3,7 +3,7 @@ import { ResponseGetMeDTO } from './get-me.dto'
 import { plainToInstance } from 'class-transformer';
 import { validate, ValidationError } from 'class-validator';
 
-export const validateDTO = async (data: any) => {
+export const validateGetMeDTO = async (data: any) => {
     const responseDTO = plainToInstance(ResponseGetMeDTO, data, { excludeExtraneousValues: true });
 
     const errors = await validate(responseDTO);

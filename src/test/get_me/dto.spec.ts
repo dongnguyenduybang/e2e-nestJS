@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Table from 'cli-table3';
 import { testCases } from './validate-input';
-import { validateDTO } from './validate-dto';
+import { validateGetMeDTO } from './validate-dto';
 
 describe('GetMe Test DTO', () => {
 
@@ -28,7 +29,7 @@ describe('GetMe Test DTO', () => {
 
                         const data = response.data;
 
-                        const resultvalidateDTO = await validateDTO(data)
+                        const resultvalidateDTO = await validateGetMeDTO(data)
 
                         if (resultvalidateDTO.status == 'PASS') {
                             results.push({
@@ -51,15 +52,23 @@ describe('GetMe Test DTO', () => {
             });
         });
     });
+
     afterAll(() => {
-        console.log('\n=== Detailed Test DTO GetMe Results ===');
-        console.table(
-            results.map(result => ({
-                'Test Case': result.name,
-                'Status': result.status,
-                'Validate DTO': result.responseDTO
-            }))
-        );
+        const table = new Table({
+            head: ["Test Case", "Status", "Validate DTO"],
+            colWidths: [30, 10, 50],
+            wordWrap: true,
+        });
+
+        results.forEach((result) => {
+            table.push([
+                result.name,
+                result.status,
+                result.responseDTO
+            ]);
+        });
+
+        console.log(table.toString());
     });
 });
 
