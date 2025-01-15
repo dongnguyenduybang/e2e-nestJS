@@ -14,3 +14,7 @@ export class ResponseGetMockMessageDTO {
     @IsDefined()
     data: string[];
 }
+
+
+
+
