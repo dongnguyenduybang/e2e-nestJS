@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { Expose, Type } from 'class-transformer';
-import { IsBoolean, IsString, IsNotEmpty, IsDefined, IsArray } from 'class-validator';
+import { Expose } from 'class-transformer';
+import { IsBoolean, IsString, IsDefined, IsArray } from 'class-validator';
 
 export class ResponseGetMockMessageDTO {
     @Expose()
