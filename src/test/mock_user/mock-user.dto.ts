@@ -3,6 +3,7 @@ import { Expose, Type } from 'class-transformer';
 import { IsBoolean, IsString, IsNotEmpty, IsDefined, IsArray, IsNumber, ValidateNested } from 'class-validator';
 
 export class UserDataDTO {
+
     @Expose()
     @IsString()
     @IsNotEmpty()

@@ -54,6 +54,7 @@ describe('MockUser Test Input', () => {
             });
         });
     });
+
     afterAll(() => {
         const table = new Table({
             head: ["Test Case", "Status", "Expected", "Received", "Differences"],

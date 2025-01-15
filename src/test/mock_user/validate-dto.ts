@@ -4,6 +4,7 @@ import { plainToInstance } from 'class-transformer';
 import { validate, ValidationError } from 'class-validator';
 
 export const validateMockUserDTO = async (data: any) => {
+
     const responseDTO = plainToInstance(ResponseGetMockUserDTO, data, { excludeExtraneousValues: true });
 
     const errors = await validate(responseDTO);

@@ -56,6 +56,7 @@ describe('MockUser Test DTO', () => {
             });
         });
     });
+
     afterAll(() => {
         const table = new Table({
             head: ["Test Case", "Status", "Validate DTO"],

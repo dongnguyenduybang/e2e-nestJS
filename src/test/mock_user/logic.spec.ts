@@ -12,6 +12,7 @@ describe('MockUser Logic Validation', () => {
         baseCountryCode = process.env.HEADER_COUNTRY_CODE;
         payload = { quantity: 1, type: 1 };
         errors = [];
+
     });
 
     it('Test logic mock user', async () => {

@@ -13,6 +13,7 @@ describe('MockUser Test Response', () => {
         baseUrlTestResponse = process.env.API_BASE_URL + 'UserView/GetMe';
 
     });
+
     it('Get data from GetMe by token', async () => {
         try {
             console.log('getme', token, userId)
@@ -25,6 +26,7 @@ describe('MockUser Test Response', () => {
             expect(userId).toEqual(data.data.userId);
 
         } catch (error: any) {
+
             console.log('Error during API request:', error.message);
         }
 
