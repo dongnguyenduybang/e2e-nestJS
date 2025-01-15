@@ -1,16 +1,17 @@
 import axios from "axios";
 
-export const getMockUser = async (): Promise<{ userId: string, token: string }> => {
+export const getMockUser = async (): Promise<{ userId: string, token: string, userName: string }> => {
     try {
         const baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockUsers';
         const payload = { prefix: 'testgetMockUser', quantity: 1, badge: 1 }
 
         const response = await axios.post(baseUrl, payload);
         if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
-            const getUserId = response.data.data[0];
+            const getUser = response.data.data[0];
             return {
-                userId: getUserId.userId,
-                token: getUserId.token,
+                userId: getUser.userId,
+                token: getUser.token,
+                userName: getUser.username
             };
         } else {
             throw new Error("Invalid response from MockUsers API");
