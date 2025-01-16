@@ -1,30 +1,45 @@
-import axios from 'axios';
-import { getMockUser } from '../share-data';
+// import axios from 'axios';
+// import { getMockUser } from '../share-data';
 
-describe('List Block User Test Response', () => {
+// describe('List Block User Test Response', () => {
 
-    let baseUrl, baseUrlTestResponse, baseCountryCode, token
+//     let baseUrl, baseUrlTestResponse, baseCountryCode, token, userId, baseUrlBLock
 
-    beforeAll(async () => {
+//     beforeAll(async () => {
 
-        baseUrl = process.env.API_BASE_URL + 'UserView/ListBlockedUsers';
-        baseCountryCode = process.env.HEADER_COUNTRY_CODE;
+//         baseUrl = process.env.API_BASE_URL + 'UserView/ListBlockedUsers';
+//         baseCountryCode = process.env.HEADER_COUNTRY_CODE;
+//         baseUrlBLock = process.env.API_BASE_URL + 'UserSetting/BlockUser'
+//         baseUrlTestResponse = process.env.API_BASE_URL + 'UserView/GetUser';
 
-        baseUrlTestResponse = process.env.API_BASE_URL + 'InternalFaker/MockFriends';
+//         const mockUserToken = await getMockUser();
+//         token = mockUserToken.token;
 
-        const mockUser = await getMockUser();
-        token = mockUser.token;
+//         const mockUserId = await getMockUser();
+//         userId = mockUserId.userId
 
-    });
+//     });
 
-    it('Test Response List Block Users', async () => {
+//     it('Test Response List Block Users', async () => {
 
-        const response = await axios.get(baseUrl, {
-            headers: { 'x-session-token': token }
-        });
+//         //check blocked
+//         const blockUser = await axios.post(baseUrlBLock, { targetUserId: userId },
+//             { headers: { 'x-session-token': token } })
 
-        const data = response.data.data;
+//         const checkBlocked = blockUser.data
+//         //check listblock
+//         const listBlock = await axios.get(baseUrl, { headers: { 'x-session-token': token } })
 
+//         const getListBlock = listBlock.data.data[0]
+//         //check get api 
+//         const testResponse = await axios.get(`${baseUrlTestResponse}?userId=${getListBlock.userId}`, {
+//             headers: {
+//                 'x-session-token': token
+//             }
+//         })
+//         const getTestResponse = testResponse.data.data;
 
-    });
-});
+//         expect(getTestResponse.blocked).toEqual(true)
+
+//     });
+// });

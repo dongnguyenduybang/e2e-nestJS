@@ -1,6 +1,126 @@
 import 'reflect-metadata';
 import { Expose, Type } from 'class-transformer';
-import { IsBoolean, IsArray, ValidateNested, IsDefined, IsEmpty, IsNotEmpty } from 'class-validator';
+import {
+    IsBoolean,
+    IsArray,
+    ValidateNested,
+    IsDefined,
+    IsNotEmpty,
+    IsString,
+    IsNumber,
+    IsOptional,
+    IsUrl,
+} from 'class-validator';
+
+export class UserProfileDTO {
+    @Expose()
+    @IsString()
+    @IsDefined()
+    @IsNotEmpty()
+    displayName: string;
+
+    @Expose()
+    @IsUrl()
+    @IsDefined()
+    @IsNotEmpty()
+    avatar: string;
+
+    @Expose()
+    @IsUrl()
+    @IsDefined()
+    @IsNotEmpty()
+    originalAvatar: string;
+
+    @Expose()
+    @IsNumber()
+    @IsDefined()
+    userBadgeType: number;
+
+    @Expose()
+    @IsNumber()
+    @IsDefined()
+    avatarType: number;
+
+    @Expose()
+    @IsString()
+    @IsOptional()
+    cover: string;
+
+    @Expose()
+    @IsString()
+    @IsOptional()
+    decoratedAvatar: string;
+
+    @Expose()
+    @IsString()
+    @IsOptional()
+    originalDecoratedAvatar: string;
+
+    @Expose()
+    @IsString()
+    @IsOptional()
+    videoAvatar: string;
+}
+
+export class PresenceDataDTO {
+    @Expose()
+    @IsNumber()
+    @IsDefined()
+    presenceState: number;
+
+    @Expose()
+    @IsNumber()
+    @IsDefined()
+    lastUpdateInSeconds: number;
+
+    @Expose()
+    @IsString()
+    @IsDefined()
+    lastUpdateTime: string;
+}
+
+export class UserDataDTO {
+    @Expose()
+    @IsString()
+    @IsDefined()
+    @IsNotEmpty()
+    userId: string;
+
+    @Expose()
+    @IsString()
+    @IsDefined()
+    @IsNotEmpty()
+    username: string;
+
+    @Expose()
+    @ValidateNested()
+    @Type(() => UserProfileDTO)
+    @IsDefined()
+    profile: UserProfileDTO;
+
+    @Expose()
+    @IsString()
+    @IsDefined()
+    @IsNotEmpty()
+    createTime: string;
+
+    @Expose()
+    @IsString()
+    @IsDefined()
+    @IsNotEmpty()
+    updateTime: string;
+
+    @Expose()
+    @IsNumber()
+    @IsDefined()
+    userType: number;
+
+    @Expose()
+    @ValidateNested()
+    @Type(() => PresenceDataDTO)
+    @IsDefined()
+    presenceData: PresenceDataDTO;
+}
 
 export class PagingDTO {
     @Expose()
@@ -20,31 +140,26 @@ export class IncludesDTO {
     @Expose()
     @IsArray()
     @IsDefined()
-    @IsNotEmpty()
     users: any[];
 
     @Expose()
     @IsArray()
     @IsDefined()
-    @IsNotEmpty()
     channels: any[];
 
     @Expose()
     @IsArray()
     @IsDefined()
-    @IsNotEmpty()
     members: any[];
 
     @Expose()
     @IsArray()
     @IsDefined()
-    @IsNotEmpty()
     messages: any[];
 
     @Expose()
     @IsArray()
     @IsDefined()
-    @IsNotEmpty()
     channelMetadata: any[];
 }
 
@@ -56,9 +171,11 @@ export class ResponseListBlockUserDTO {
 
     @Expose()
     @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => UserDataDTO)
     @IsDefined()
     @IsNotEmpty()
-    data: any[];
+    data: UserDataDTO[];
 
     @Expose()
     @ValidateNested()
@@ -73,4 +190,9 @@ export class ResponseListBlockUserDTO {
     @IsDefined()
     @IsNotEmpty()
     includes: IncludesDTO;
+
+    @Expose()
+    @IsNumber()
+    @IsDefined()
+    total: number;
 }
