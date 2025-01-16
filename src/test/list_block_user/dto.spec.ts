@@ -1,18 +1,16 @@
 // import axios from 'axios';
 // import Table from 'cli-table3';
 // import { testCases } from './validate-input';
-// import { validateMockUserDTO } from './validate-dto';
+// import { validateListBLockUserDTO } from './validate-dto';
 
+// describe('List Block User Test DTO', () => {
 
-// describe('MockUser Test DTO', () => {
-
-//     let baseUrl, baseCountryCode;
+//     let baseUrl;
 //     const results = [];
 
 //     beforeAll(async () => {
 
-//         baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockUsers';
-//         baseCountryCode = process.env.HEADER_COUNTRY_CODE;
+//         baseUrl = process.env.API_BASE_URL + 'UserView/ListBlockedUsers';
 //     });
 
 //     testCases.forEach(testGroup => {
@@ -23,25 +21,23 @@
 
 //                 it(testCase.name, async () => {
 
-//                     const payload = testCase.payload
-
+//                     const getPayload = await testCase.header();
+//                     const token = getPayload.token
 //                     try {
 
-//                         const response = await axios.post(baseUrl, payload, {});
+//                         const response = await axios.get(baseUrl, { headers: { 'x-session-token': token } });
 
 //                         const data = response.data;
 
-//                         const resultvalidateDTO = await validateMockUserDTO(data)
+//                         const resultvalidateDTO = await validateListBLockUserDTO(data)
 
 //                         if (resultvalidateDTO.status == 'PASS') {
-
 //                             results.push({
 //                                 name: testCase.name,
 //                                 status: resultvalidateDTO.status,
 //                                 responseDTO: resultvalidateDTO.responseDTO
 //                             })
 //                         } else {
-
 //                             results.push({
 //                                 name: testCase.name,
 //                                 status: resultvalidateDTO.status,
@@ -50,13 +46,12 @@
 //                         }
 
 //                     } catch (error: any) {
-//                         console.log(error.message)
+
 //                     }
 //                 });
 //             });
 //         });
 //     });
-
 //     afterAll(() => {
 //         const table = new Table({
 //             head: ["Test Case", "Status", "Validate DTO"],

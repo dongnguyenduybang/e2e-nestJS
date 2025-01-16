@@ -1,10 +1,10 @@
 
-import { ResponseGetMockFriendDTO } from './mock-friend.dto'
+import { ResponseListBlockUserDTO } from './list-block-user.dto'
 import { plainToInstance } from 'class-transformer';
 import { validate, ValidationError } from 'class-validator';
 
-export const validateMockFriendDTO = async (data: any) => {
-    const responseDTO = plainToInstance(ResponseGetMockFriendDTO, data, { excludeExtraneousValues: true });
+export const validateListBLockUserDTO = async (data: any) => {
+    const responseDTO = plainToInstance(ResponseListBlockUserDTO, data, { excludeExtraneousValues: true });
 
     const errors = await validate(responseDTO);
     if (errors.length > 0) {
@@ -30,7 +30,7 @@ export const validateMockFriendDTO = async (data: any) => {
 
                     if (childError.children && childError.children.length > 0) {
                         childError.children.forEach((subChildError) => {
-
+                            errorMessages += `{subChildError.property}: `;
                             Object.values(subChildError.constraints || {}).forEach((message) => {
                                 errorMessages += `${subChildError.property} - ${message} `;
                             });
@@ -41,6 +41,7 @@ export const validateMockFriendDTO = async (data: any) => {
         });
 
         return {
+
             status: 'Failure',
             responseDTO: errorMessages.trim()
         }

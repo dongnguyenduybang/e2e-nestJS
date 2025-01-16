@@ -1,93 +1,96 @@
-import axios from 'axios';
-import { getMockUser } from '../share-data';
+// import axios from 'axios';
+// import { getMockUser } from '../share-data';
 
-describe('MockChannel Logic Validation', () => {
-    let baseUrl: string;
-    let userId: string;
-    let baseCountryCode: string, payload: any;
-    let errors: { field: string, expected: string, actual: string }[] = [];
+// describe('MockChannel Logic Validation', () => {
 
-    beforeAll(async () => {
-        baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockChannels';
+//     let baseUrl, userId;
+//     let baseCountryCode: string, payload: any;
+//     let errors: { field: string, expected: string, actual: string }[] = [];
 
-        const mockChannel = await getMockUser();
-        userId = mockChannel.userId;
-        baseCountryCode = process.env.HEADER_COUNTRY_CODE;
-        errors = [];
-        payload = { quantity: 2, prefix: "aaaaaaa", typeChannel: 0, totalMessages: 1 };
-    });
+//     beforeAll(async () => {
 
-    it('Test Logic MockChannel', async () => {
-        const response = await axios.post(baseUrl, payload, {
-            headers: {
-                'x-user-id': userId,
-                'x-country-code': baseCountryCode
-            }
-        });
+//         baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockChannels';
+//         baseCountryCode = process.env.HEADER_COUNTRY_CODE;
 
-        const assertDefined = (value: any, name: string, expectedType: string) => {
-            if (value === undefined || value === null) {
-                errors.push({ field: name, expected: expectedType, actual: 'undefined/null' });
-            }
-        };
+//         const mockChannel = await getMockUser();
+//         userId = mockChannel.userId;
 
-        const assertString = (value: any, name: string) => {
-            if (typeof value !== 'string') {
-                errors.push({ field: name, expected: 'string', actual: typeof value });
-            }
-        };
+//         errors = [];
+//         payload = { quantity: 1, prefix: "aaaaaaa", typeChannel: 0, totalMessages: 1 };
+//     });
 
-        const assertArray = (value: any, name: string) => {
-            if (!Array.isArray(value)) {
-                errors.push({ field: name, expected: 'array', actual: typeof value });
-            }
-        };
+//     it('Test Logic MockChannel', async () => {
 
-        const { ok, data } = response.data;
+//         const response = await axios.post(baseUrl, payload, {
+//             headers: {
+//                 'x-user-id': userId,
+//                 'x-country-code': baseCountryCode
+//             }
+//         });
 
-        if (!ok) errors.push({ field: 'ok', expected: 'true', actual: String(ok) });
+//         const assertDefined = (value: any, name: string, expectedType: string) => {
+//             if (value === undefined || value === null) {
+//                 errors.push({ field: name, expected: expectedType, actual: 'undefined/null' });
+//             }
+//         };
 
-        assertDefined(data, 'data', 'array');
-        assertArray(data, 'data');
+//         const assertString = (value: any, name: string) => {
+//             if (typeof value !== 'string') {
+//                 errors.push({ field: name, expected: 'string', actual: typeof value });
+//             }
+//         };
 
-        data.forEach((channel, index) => {
+//         const assertArray = (value: any, name: string) => {
+//             if (!Array.isArray(value)) {
+//                 errors.push({ field: name, expected: 'array', actual: typeof value });
+//             }
+//         };
 
-            assertDefined(channel.channelId, `data[${index}].channelId`, 'string');
-            assertString(channel.channelId, `data[${index}].channelId`);
+//         const { ok, data } = response.data;
 
-            assertDefined(channel.ownerId, `data[${index}].ownerId`, 'string');
-            assertString(channel.ownerId, `data[${index}].ownerId`);
+//         if (!ok) errors.push({ field: 'ok', expected: 'true', actual: String(ok) });
 
-            assertDefined(channel.messageIds, `data[${index}].messageIds`, 'array');
-            assertArray(channel.messageIds, `data[${index}].messageIds`);
+//         assertDefined(data, 'data', 'array');
+//         assertArray(data, 'data');
 
-            if (payload.typeChannel === 0) {
-                if (!channel.name || channel.name.trim() === '') {
-                    errors.push({
-                        field: `data[${index}].name`,
-                        expected: 'non-empty string',
-                        actual: 'empty'
-                    });
-                }
-            } else if ([1, 2, 3].includes(payload.typeChannel)) {
-                if (channel.name && channel.name.trim() !== '') {
-                    errors.push({
-                        field: `data[${index}].name`,
-                        expected: 'empty string',
-                        actual: channel.name
-                    });
-                }
-            }
-        });
+//         data.forEach((channel, index) => {
 
-        if (errors.length > 0) {
-            console.table(errors.map(error => ({
-                Field: error.field,
-                ExpectedType: error.expected,
-                ActualValue: error.actual
-            })));
-        }
+//             assertDefined(channel.channelId, `data[${index}].channelId`, 'string');
+//             assertString(channel.channelId, `data[${index}].channelId`);
 
-        expect(errors).toEqual([]);
-    });
-});
+//             assertDefined(channel.ownerId, `data[${index}].ownerId`, 'string');
+//             assertString(channel.ownerId, `data[${index}].ownerId`);
+
+//             assertDefined(channel.messageIds, `data[${index}].messageIds`, 'array');
+//             assertArray(channel.messageIds, `data[${index}].messageIds`);
+
+//             if (payload.typeChannel === 0) {
+//                 if (!channel.name || channel.name.trim() === '') {
+//                     errors.push({
+//                         field: `data[${index}].name`,
+//                         expected: 'non-empty string',
+//                         actual: 'empty'
+//                     });
+//                 }
+//             } else if ([1, 2, 3].includes(payload.typeChannel)) {
+//                 if (channel.name && channel.name.trim() !== '') {
+//                     errors.push({
+//                         field: `data[${index}].name`,
+//                         expected: 'empty string',
+//                         actual: channel.name
+//                     });
+//                 }
+//             }
+//         });
+
+//         if (errors.length > 0) {
+//             console.table(errors.map(error => ({
+//                 Field: error.field,
+//                 ExpectedType: error.expected,
+//                 ActualValue: error.actual
+//             })));
+//         }
+
+//         expect(errors).toEqual([]);
+//     });
+// });

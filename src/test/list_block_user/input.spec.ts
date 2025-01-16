@@ -2,13 +2,13 @@
 // import Table from 'cli-table3';
 // import { testCases } from './validate-input';
 
-// describe('MockFriend Test Input', () => {
-//     let baseUrl, baseCountryCode;
+// describe('List BLock User Test Input', () => {
+//     let baseUrl;
 //     const results = [];
 
 //     beforeAll(async () => {
-//         baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockFriends';
-//         baseCountryCode = process.env.HEADER_COUNTRY_CODE;
+
+//         baseUrl = process.env.API_BASE_URL + 'UserView/ListBlockedUsers ';
 //     });
 
 //     testCases.forEach(testGroup => {
@@ -19,33 +19,35 @@
 
 //                 it(testCase.name, async () => {
 
-//                     const payload = testCase.payload
-//                     const getHeader = await testCase.header()
-
-//                     const userId = getHeader.userId
 //                     const expectedDetails = testCase.expectedDetails;
+
+//                     const getHeader = await testCase.header()
+//                     const token = getHeader.token
 
 //                     try {
 
-//                         const response = await axios.post(baseUrl, payload, {
-//                             headers: {
-//                                 'x-user-id': userId,
-//                                 'x-country-code': baseCountryCode
-
-//                             }
-//                         });
-//                         const dataMockFriend = response.data;
-
-//                         expect(dataMockFriend.data).toBeDefined()
-//                         expect(dataMockFriend.ok).toBe(true)
+//                         const response = await axios.get(baseUrl, { headers: { 'x-session-token': token } });
+//                         const dataGetMe = response.data;
+//                         expect(dataGetMe.data).toBeDefined()
+//                         expect(dataGetMe.ok).toBe(true)
 
 //                     } catch (error: any) {
 
-//                         const recivied = error.response?.data?.error?.details || [];
+//                         const recivied = error.response?.data?.error?.details || error.response?.data || [];
 //                         const expected = expectedDetails
 
+//                         let reciviedArray;
+
+//                         if (typeof recivied === "string") {
+//                             reciviedArray = [recivied];
+//                         } else if (Array.isArray(recivied)) {
+//                             reciviedArray = recivied;
+//                         } else {
+//                             reciviedArray = [];
+//                         }
+
 //                         const missingInRecivied = expected.filter(detail => !recivied.includes(detail));
-//                         const extraInRecivied = recivied.filter(detail => !expected.includes(detail));
+//                         const extraInRecivied = reciviedArray.filter(detail => !expected.includes(detail));
 
 //                         const differences = [...missingInRecivied, ...extraInRecivied];
 
@@ -53,11 +55,12 @@
 //                             name: testCase.name,
 //                             status: differences.length > 0 ? 'FAIL' : 'PASS',
 //                             expected: expected,
-//                             recivied: recivied,
+//                             recivied: reciviedArray,
 //                             differences: differences,
 //                         });
 
 //                         expect(differences).toHaveLength(0);
+
 //                     }
 //                 });
 //             });

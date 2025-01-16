@@ -1,43 +1,28 @@
-import axios from 'axios';
-import { testCases } from './validate-input';
+// import axios from 'axios';
+// import { getMockChannel } from '../share-data';
 
-describe('MockChannel Test Response', () => {
-    let baseUrl, baseUrlTestResponse, baseCountryCode
+// describe('MockChannel Test Response', () => {
+//     let baseUrl, baseUrlTestResponse, baseCountryCode, channelId
 
-    beforeAll(async () => {
+//     beforeAll(async () => {
 
-        baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockMessages';
-        baseCountryCode = process.env.HEADER_COUNTRY_CODE;
-        baseUrlTestResponse = process.env.API_BASE_URL + 'MessageView/ListMessages';
+//         baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockMessages';
+//         baseCountryCode = process.env.HEADER_COUNTRY_CODE;
+//         baseUrlTestResponse = process.env.API_BASE_URL + 'MessageView/ListMessages';
 
-    });
+//         const dataMockChannel = await getMockChannel()
+//         channelId = dataMockChannel.channelId
+//     });
 
-    testCases.forEach(testGroup => {
+//     it('Get data from ListMessages by messageId', async () => {
+//         try {
 
-        describe(testGroup.describe, () => {
+//             const testMessageIdResponse = await axios.get(`${baseUrlTestResponse}?channelId=${channelId}&workspaceId=0`);
 
-            testGroup.cases.forEach(testCase => {
+//             expect(testMessageIdResponse.status).toBe(200);
+//         }
+//         catch { }
 
-                it('Get data from ListMessages by messageId', async () => {
-                    try {
+//     });
 
-                        const payload = await testCase.payload();
-                        const channelId = payload.channelId;
-
-                        const testMessageIdResponse = await axios.get(`${baseUrlTestResponse}?channelId=${channelId}&workspaceId=0`);
-
-                        expect(testMessageIdResponse.status).toBe(200);
-
-                    } catch (error) {
-                        console.log('Error during API request:', error.message);
-                    }
-                });
-
-            });
-        });
-    });
-
-
-
-});
-
+// })

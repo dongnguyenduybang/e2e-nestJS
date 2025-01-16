@@ -1,0 +1,60 @@
+[33ma0d6c55[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~
+[33m75c25ef[m HEAD@{1}: commit: fix: add value return mockUser
+[33ma0d6c55[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{2}: commit: feat: add validate dto, input
+[33mfa1476b[m HEAD@{3}: commit: feat: add dto mockfriend
+[33m8068b38[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{4}: pull origin main --no-rebase: Merge made by the 'ort' strategy.
+[33m8c9db7d[m HEAD@{5}: commit: fix: add payload from input
+[33m54f493a[m HEAD@{6}: commit: fix: add payload from testcase
+[33m095e27a[m HEAD@{7}: commit: fix: add payload from input
+[33m7c31ef4[m HEAD@{8}: commit (merge): Merge branch 'main' of github.com:dongnguyenduybang/e2e-nestJS
+[33m9c00e41[m HEAD@{9}: commit: fix: add test dto, logic for endpoint mock message
+[33m8ac1c5c[m HEAD@{10}: pull origin main --no-rebase: Merge made by the 'ort' strategy.
+[33m3580f3b[m HEAD@{11}: commit: fix: add test dto, logic for endpoint mock message
+[33m3663228[m HEAD@{12}: pull origin main --no-rebase: Merge made by the 'ort' strategy.
+[33mfec2457[m HEAD@{13}: commit: fix: add test dto, logic, response for endpoint mockuser
+[33m8df530a[m HEAD@{14}: commit: fix: add test dto, logic, response for endpoint mockuser
+[33m10826da[m HEAD@{15}: commit: fix: add test dto, logic, response for endpoint MockFriend
+[33me816c4d[m HEAD@{16}: commit: fix: add test dto, logic, response for endpoint MockChannel
+[33md528e76[m HEAD@{17}: commit: fix: add test dto, logic, response for endpoint GetUser
+[33mbdaf441[m HEAD@{18}: commit: fix: add test dto, logic, response for endpoint GetMe
+[33m85dad4e[m HEAD@{19}: commit: fix: add test dto, logic, response for endpoint GetMe
+[33mca82b38[m HEAD@{20}: commit: fix: update validate DTO get me
+[33mc4a4d74[m HEAD@{21}: commit: fix: update valdiate dto get me
+[33m827500a[m HEAD@{22}: commit: feat: package
+[33mc531b6f[m HEAD@{23}: commit: style: remove space
+[33mf98a379[m HEAD@{24}: commit: fix: console log logic error
+[33m899b7e2[m HEAD@{25}: commit: fix: result .length
+[33m03a9995[m HEAD@{26}: commit: style: comment
+[33mfc0d036[m HEAD@{27}: commit: feat: share date
+[33m5759489[m HEAD@{28}: commit: style: open comment
+[33m1091558[m HEAD@{29}: commit: fix: response
+[33mda971ba[m HEAD@{30}: commit: fix: handle & testcase mockUser
+[33m2085c8a[m HEAD@{31}: commit: fix: handle & testcase mockFriend
+[33mb9d1ded[m HEAD@{32}: commit: fix: handle & testcase mockChannel
+[33m3d85b8c[m HEAD@{33}: commit: fix: handle & testcase getuser
+[33m5e47083[m HEAD@{34}: commit: fix: handle & testcase getme
+[33mea378d4[m HEAD@{35}: commit: fix: handle & testcase mockMessage
+[33m744a112[m HEAD@{36}: commit: fix: delete incorrect or outdated file
+[33me7258c3[m HEAD@{37}: commit: fix: testcase channel, friend, message, user
+[33mfbb4fda[m HEAD@{38}: commit: fix: dto class -> interface
+[33m6929203[m HEAD@{39}: commit: fix: field must empty
+[33m34677e8[m HEAD@{40}: commit: fix: fix quantity < 0
+[33mbd5378f[m HEAD@{41}: commit: feat: e2e mockMessage
+[33mf20692e[m HEAD@{42}: commit: feat: e2e mockFriend
+[33m3cc7ae4[m HEAD@{43}: commit: feat: handle mockMessage
+[33m3ac7295[m HEAD@{44}: commit: feat: hande mockFriend
+[33m71c1be0[m HEAD@{45}: commit: fix: add friendDTO, messageDTO
+[33m59a5941[m HEAD@{46}: commit: fix: add messagesmodule, friendmodule
+[33m9ca5be8[m HEAD@{47}: commit: fix: add mock messages, friends
+[33mff121bf[m HEAD@{48}: commit: fix: fix quantỉy, add type channel
+[33m8eafe45[m HEAD@{49}: commit: fix: add channel module
+[33mb1fde10[m HEAD@{50}: commit: fear: e2e mock channel
+[33m94cc71b[m HEAD@{51}: commit: feat: handle mock channel
+[33mecf04df[m HEAD@{52}: commit: fix: get multi endpoint
+[33mfd58556[m HEAD@{53}: commit: fix: add badge
+[33m07df3d8[m HEAD@{54}: commit: fix: update package
+[33m9d9a395[m HEAD@{55}: Branch: renamed refs/heads/master to refs/heads/main
+[33m9d9a395[m HEAD@{57}: commit: first commit
+[33m6bedcd6[m HEAD@{58}: commit: feat: validate pipes
+[33mccf7a02[m HEAD@{59}: commit: feat: create mockuser
+[33mfbe788c[m HEAD@{60}: clone: from https://github.com/nestjs/typescript-starter.git

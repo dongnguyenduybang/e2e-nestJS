@@ -3,7 +3,7 @@ import axios from "axios";
 export const getMockUser = async (): Promise<{ userId: string, token: string, userName: string }> => {
     try {
         const baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockUsers';
-        const payload = { prefix: 'testgetMockUser', quantity: 1, badge: 1 }
+        const payload = { prefix: 'testgetMockUser', quantity: 1, badge: 0 }
 
         const response = await axios.post(baseUrl, payload);
         if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
@@ -26,7 +26,7 @@ export const getMockUser = async (): Promise<{ userId: string, token: string, us
 };
 
 
-export const getMockChannelId = async (): Promise<string> => {
+export const getMockChannel = async (): Promise<{ channelId: string }> => {
     try {
         const baseUrl = process.env.API_BASE_URL + 'InternalFaker/MockChannels';
         const baseCountryCode = process.env.HEADER_COUNTRY_CODE;
@@ -40,8 +40,10 @@ export const getMockChannelId = async (): Promise<string> => {
         const response = await axios.post(baseUrl, payload, { headers });
 
         if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
-            const getChannelId = response.data.data[0];
-            return getChannelId.channelId;
+            const getChannel = response.data.data[0];
+            return {
+                channelId: getChannel.channelID
+            };
         } else {
             throw new Error("Invalid response from MockChannel API");
         }
