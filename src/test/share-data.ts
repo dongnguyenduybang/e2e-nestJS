@@ -25,6 +25,30 @@ export const getMockUser = async (): Promise<{ userId: string, token: string, us
     }
 };
 
+export const getMockUserDev = async (): Promise<{ userId: string, token: string, userName: string }> => {
+    try {
+        const baseUrl = process.env.API_BASE_URL_DEV + 'InternalFaker/MockUsers';
+        const payload = { prefix: 'testgetMockUser', quantity: 1, badge: 0 }
+
+        const response = await axios.post(baseUrl, payload);
+        if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
+            const getUser = response.data.data[0];
+            return {
+                userId: getUser.userId,
+                token: getUser.token,
+                userName: getUser.username
+            };
+        } else {
+            throw new Error("Invalid response from MockUsers API");
+        }
+    } catch (error) {
+
+        console.error("Error in getMockUser:", error);
+
+
+        throw new Error("Failed to get getMockUser");
+    }
+};
 
 export const getMockChannel = async (): Promise<{ channelId: string }> => {
     try {
